@@ -18,6 +18,7 @@ var (
 	logFormat    string
 	cliLogger    logr.Logger
 	gmailctlPath string
+	runGmailctl  bool
 )
 
 var rootCmd = &cobra.Command{
@@ -48,6 +49,7 @@ func init() {
 	rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "enable verbose mode")
 	rootCmd.PersistentFlags().StringVar(&logFormat, "log-format", "", "json or text (default is text)")
 	rootCmd.PersistentFlags().StringVar(&gmailctlPath, "gmailctl-path", "/usr/local/bin/gmailctl", "path to gmailctl executable")
+	rootCmd.PersistentFlags().BoolVar(&runGmailctl, "run-gmailctl", false, "run gmailctl --yes after successful validation")
 
 	if err := viper.BindPFlag("verbose", rootCmd.PersistentFlags().Lookup("verbose")); err != nil {
 		fmt.Printf("Error binding verbose flag: %v\n", err)
@@ -59,6 +61,10 @@ func init() {
 	}
 	if err := viper.BindPFlag("gmailctl-path", rootCmd.PersistentFlags().Lookup("gmailctl-path")); err != nil {
 		fmt.Printf("Error binding gmailctl-path flag: %v\n", err)
+		os.Exit(1)
+	}
+	if err := viper.BindPFlag("run-gmailctl", rootCmd.PersistentFlags().Lookup("run-gmailctl")); err != nil {
+		fmt.Printf("Error binding run-gmailctl flag: %v\n", err)
 		os.Exit(1)
 	}
 }
@@ -84,6 +90,7 @@ func initConfig() {
 	logFormat = viper.GetString("log-format")
 	verbose = viper.GetBool("verbose")
 	gmailctlPath = viper.GetString("gmailctl-path")
+	runGmailctl = viper.GetBool("run-gmailctl")
 }
 
 func LoggerFrom(ctx context.Context, keysAndValues ...interface{}) logr.Logger {

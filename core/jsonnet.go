@@ -19,7 +19,7 @@ func ProcessJsonnet(ctx context.Context, email string) {
 		return
 	}
 
-	if err := validateAndSaveConfig(ctx, configPath, updatedConfig); err != nil {
+	if err := validateAndSaveConfig(ctx, configPath, updatedConfig, email); err != nil {
 		logger.Error(err, "Failed to validate and save config")
 	}
 }

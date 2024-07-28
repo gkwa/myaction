@@ -21,33 +21,11 @@ myaction -v email-from-clipboard
 # Use JSON logging format
 myaction --log-format json email-from-cli user@example.com
 
+# Run gmailctl after successful validation
+myaction email-from-cli --run-gmailctl user@example.com
+
 # Show version
 myaction version
 
 # Get help
 myaction --help
-```
-
-## Install myaction
-On macOS/Linux:
-```bash
-brew install gkwa/homebrew-tools/myaction
-```
-
-On Windows:
-```powershell
-TBD
-```
-
-## Configuration
-By default, myaction looks for the gmailctl configuration file at `$HOME/.gmailctl/config.jsonnet`. 
-It uses `/usr/local/bin/gmailctl` as the default path for the gmailctl executable.
-
-You can override these defaults using command-line flags or by setting up a configuration file at `$HOME/.myaction.yaml`.
-
-Example `.myaction.yaml`:
-```yaml
-gmailctl-path: /custom/path/to/gmailctl
-verbose: true
-log-format: json
-```
