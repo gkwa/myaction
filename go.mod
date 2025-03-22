@@ -15,7 +15,7 @@ require (
 	github.com/google/go-jsonnet v0.20.0
 	github.com/magefile/mage v1.15.0
 	github.com/mitchellh/go-homedir v1.1.0
-	github.com/rs/zerolog v1.33.0
+	github.com/rs/zerolog v1.34.0
 	github.com/spf13/cobra v1.9.1
 	github.com/spf13/viper v1.20.0
 	go.uber.org/zap v1.27.0
