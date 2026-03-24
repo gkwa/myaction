@@ -12,7 +12,7 @@ require (
 	github.com/go-logr/zapr v1.3.0
 	github.com/go-logr/zerologr v1.2.3
 	github.com/google/go-containerregistry v0.21.3
-	github.com/google/go-jsonnet v0.21.0
+	github.com/google/go-jsonnet v0.22.0
 	github.com/magefile/mage v1.16.1
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/rs/zerolog v1.34.0
